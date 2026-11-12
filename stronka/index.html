@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nate's Softwares</title>
+<link rel="icon" type="image/gif" href="black-cat-blinking.gif">
+<style>
+:root{--bg:#0a0a0b;--surface:#131315;--surface2:#1a1a1d;--line:#26262a;--text:#ececef;--muted:#8d8d96;--accent:#9a9aa3;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:transparent;color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(10,10,11,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:rgba(10,10,11,.9)}
+.bar{display:flex;align-items:center;gap:24px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+.mark{width:36px;height:36px;border-radius:10px;background:#141417;border:2px solid #ffffff;display:grid;place-items:center;box-shadow:0 0 10px rgba(255,255,255,.25)}
+nav{display:flex;gap:6px;flex:1}
+nav a{padding:8px 12px;border-radius:8px;color:var(--muted);font-size:14px}
+nav a:hover{color:var(--text);background:var(--surface)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--surface2);border-color:#38383e}
+.btn.primary{background:#e4e4e8;color:#0a0a0b;border-color:#e4e4e8}
+.btn.primary:hover{background:#fff}
+.actions{display:flex;gap:10px}
+.hero{position:relative;padding:96px 0 80px;text-align:center;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:-180px;width:720px;height:520px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(154,154,163,.16),transparent);pointer-events:none}
+.pill{display:inline-block;padding:5px 12px;border:1px solid var(--line);border-radius:99px;font-size:12px;color:var(--muted);background:var(--surface);margin-bottom:22px}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.08;margin:0 0 18px;letter-spacing:-1.2px}
+h1 span{color:var(--accent)}
+.lead{max-width:540px;margin:0 auto 32px;color:var(--muted);font-size:17px}
+.hero .actions{justify-content:center;flex-wrap:wrap}
+section{padding:64px 0}
+h2{font-size:28px;margin:0 0 8px;letter-spacing:-.5px}
+.sub{color:var(--muted);margin:0 0 28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{padding:7px 14px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:var(--muted);background:var(--surface);cursor:pointer;font-family:inherit}
+.chip.on{color:var(--text);border-color:#4a4a52;background:var(--surface2)}
+.empty{border:1px dashed #34343a;border-radius:16px;background:var(--surface);padding:64px 24px;text-align:center}
+.empty .mark{width:56px;height:56px;border-radius:16px;font-size:36px;margin:0 auto 18px}
+.empty h3{margin:0 0 6px;font-size:20px}
+.empty p{margin:0;color:var(--muted)}
+.cta{border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,var(--surface2),var(--surface));padding:48px 24px;text-align:center}
+.cta h2{margin-bottom:10px}
+.cta p{color:var(--muted);margin:0 auto 24px;max-width:460px}
+.faq{max-width:760px}
+details{border:1px solid var(--line);border-radius:12px;background:var(--surface);margin-bottom:10px;padding:0 18px}
+summary{cursor:pointer;padding:16px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--muted);font-size:20px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:0 0 16px;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:40px 0 28px;margin-top:24px}
+.cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer h4{margin:0 0 12px;font-size:13px;color:var(--text);text-transform:uppercase;letter-spacing:.8px}
+footer li{list-style:none;margin-bottom:8px;font-size:14px;color:var(--muted)}
+footer ul{margin:0;padding:0}
+footer li a:hover{color:var(--text)}
+footer p{color:var(--muted);font-size:14px;max-width:320px}
+.copy{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media(max-width:760px){nav{display:none}.bar{justify-content:space-between}.cols{grid-template-columns:1fr}.hero{padding:64px 0 56px}.actions .hide-m{display:none}}
+.bg{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.bg canvas{width:100%;height:100%;display:block}
+.mark{padding:0}
+.mark img{width:100%;height:100%;display:block;object-fit:contain;padding:2px;filter:drop-shadow(0 0 1px rgba(255,255,255,.8))}
+
+
+
+.bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle 360px at var(--mx,50%) var(--my,25%),rgba(154,154,163,.13),transparent)}
+.mark{position:relative;overflow:hidden;animation:glow 3.5s ease-in-out infinite}
+.mark::after{content:"";position:absolute;top:-20%;bottom:-20%;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);animation:sheen 4s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 rgba(154,154,163,0)}50%{box-shadow:0 0 18px rgba(154,154,163,.4)}}
+@keyframes sheen{0%,55%{left:-60%}100%{left:130%}}
+h1 span{background:linear-gradient(90deg,#7c7c85,#f2f2f5,#7c7c85);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 5s linear infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+@media(prefers-reduced-motion:reduce){.mark,.mark::after,h1 span{animation:none}}
+
+/* --- Background Video (EV -2) --- */
+.video-bg-wrap{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#060608}
+#bg-video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;filter:brightness(0.25) contrast(1.18) saturate(0.95)}
+.video-overlay{position:absolute;inset:0;background:radial-gradient(circle at center,rgba(8,8,10,0.3) 0%,rgba(8,8,10,0.85) 100%);pointer-events:none}
+
+/* --- Enter Screen (Click the cat) --- */
+.enter-screen{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(7,7,9,0.86);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);transition:opacity 0.75s cubic-bezier(0.16,1,0.3,1),visibility 0.75s,transform 0.75s cubic-bezier(0.16,1,0.3,1)}
+.enter-screen.entered{opacity:0;visibility:hidden;pointer-events:none;transform:scale(1.06)}
+.enter-content{display:flex;flex-direction:column;align-items:center;text-align:center;user-select:none;cursor:default}
+.enter-title{font-size:clamp(22px,4vw,34px);font-weight:900;letter-spacing:5px;text-transform:uppercase;margin-bottom:26px;background:linear-gradient(90deg,#fff,#a1a1aa,#e4e4e7,#ffffff);background-size:250% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:enter-shimmer 3.5s linear infinite;text-shadow:0 0 28px rgba(255,255,255,0.45)}
+@keyframes enter-shimmer{to{background-position:250% center}}
+.cat-enter-btn{position:relative;width:145px;height:145px;cursor:pointer;border-radius:50%;display:grid;place-items:center;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),filter 0.35s;animation:cat-float 3s ease-in-out infinite}
+.cat-enter-btn:hover{transform:scale(1.16) rotate(-2deg);filter:drop-shadow(0 0 24px rgba(255,255,255,0.95)) drop-shadow(0 0 45px rgba(255,255,255,0.5))}
+.cat-enter-btn.burst{animation:cat-burst 0.7s forwards cubic-bezier(0.16,1,0.3,1)}
+@keyframes cat-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes cat-burst{0%{transform:scale(1);opacity:1;filter:drop-shadow(0 0 25px #fff)}50%{transform:scale(2.2);opacity:0.8;filter:drop-shadow(0 0 60px #ffffff) blur(4px)}100%{transform:scale(4.8);opacity:0;filter:blur(18px)}}
+.cat-enter-img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 2px rgba(255,255,255,0.9))}
+.enter-hint{margin-top:24px;font-size:13px;letter-spacing:0.5px;color:rgba(255,255,255,0.7);font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;max-width:90%;text-align:center}
+.enter-hint img{width:22px;height:18px;object-fit:contain;vertical-align:middle;filter:drop-shadow(0 0 6px rgba(255,255,255,0.4))}
+
+
+
+/* --- Featured Cheat Card: CLOUDE.SYS --- */
+.cheat-card{position:relative;border:1px solid rgba(255,255,255,0.18);border-radius:24px;background:linear-gradient(165deg,rgba(24,24,30,0.88) 0%,rgba(12,12,16,0.95) 100%);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:36px;text-align:left;box-shadow:0 24px 60px rgba(0,0,0,0.7),0 0 40px rgba(255,255,255,0.04);transition:border-color 0.35s ease,box-shadow 0.35s ease,transform 0.35s ease;overflow:hidden}
+.cheat-card:hover{border-color:rgba(255,255,255,0.38);box-shadow:0 30px 80px rgba(0,0,0,0.85),0 0 50px rgba(255,255,255,0.1);transform:translateY(-3px)}
+.cheat-card::before{content:"";position:absolute;top:-120px;right:-120px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,0.08) 0%,transparent 70%);pointer-events:none}
+.cheat-card-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+.cheat-badges{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.badge-status{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:99px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(34,197,94,0.15);color:#4ade80;border:1px solid rgba(34,197,94,0.3)}
+.badge-status::before{content:"";width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.85)}}
+.cheat-title{font-size:clamp(32px,5vw,46px);font-weight:900;letter-spacing:1.5px;color:#ffffff;margin:0 0 10px;text-shadow:0 0 25px rgba(255,255,255,0.45);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.title-cat-emoji{width:clamp(36px,5vw,48px);height:auto;object-fit:contain;vertical-align:middle;filter:drop-shadow(0 0 14px rgba(255,215,0,0.35));transition:transform 0.3s ease}
+.cheat-title:hover .title-cat-emoji{transform:scale(1.15) rotate(6deg)}
+.pill-cat-emoji{width:20px;height:20px;object-fit:contain;vertical-align:middle;margin-left:8px;filter:drop-shadow(0 0 6px rgba(255,215,0,0.35))}
+.cheat-desc{color:var(--muted);font-size:16px;line-height:1.6;max-width:720px;margin:0 0 24px}
+.cheat-features{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.feature-tag{padding:7px 14px;border-radius:10px;font-size:13px;font-weight:600;color:#ececef;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);display:inline-flex;align-items:center;gap:6px}
+.cheat-media-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.14);background:#0a0a0d;margin-bottom:28px;cursor:pointer;display:block;box-shadow:0 12px 36px rgba(0,0,0,0.6);text-decoration:none}
+.cheat-media-wrap img{width:100%;height:auto;display:block;object-fit:cover;transition:transform 0.45s ease,filter 0.45s ease}
+.cheat-media-wrap:hover img{transform:scale(1.02);filter:brightness(1.06)}
+.media-overlay-badge{position:absolute;bottom:16px;right:16px;background:rgba(10,10,14,0.85);backdrop-filter:blur(10px);padding:8px 16px;border-radius:99px;font-size:12px;font-weight:700;color:#fff;border:1px solid rgba(255,255,255,0.22);display:inline-flex;align-items:center;gap:8px;transition:all 0.25s}
+.cheat-media-wrap:hover .media-overlay-badge{background:#ffffff;color:#000000;box-shadow:0 0 20px rgba(255,255,255,0.8)}
+
+/* Interactive Cutout Showcase Grid with Sway & Shimmer */
+.cheat-showcase-grid{display:grid;grid-template-columns:3fr 1.25fr;gap:22px;margin:28px 0;align-items:stretch}
+.showcase-item{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;z-index:1;perspective:1000px}
+.showcase-item:hover{z-index:25}
+.showcase-card{position:relative;height:100%;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(18,18,24,0.72) 0%,rgba(9,9,13,0.88) 100%);border:1px solid rgba(255,255,255,0.12);border-radius:18px;padding:12px;box-shadow:0 16px 36px rgba(0,0,0,0.65);backdrop-filter:blur(14px);transform-origin:center center;overflow:hidden;transition:transform 0.4s cubic-bezier(0.2,0.8,0.2,1),box-shadow 0.4s cubic-bezier(0.2,0.8,0.2,1),border-color 0.4s ease}
+.showcase-item:hover .showcase-card{animation:cardSway 2.4s ease-in-out infinite,cardGleamAura 2.8s linear infinite}
+@keyframes cardSway{
+  0%{transform:scale(1.055) translateY(-6px) rotate(0deg)}
+  25%{transform:scale(1.065) translateY(-10px) rotate(-1.8deg)}
+  50%{transform:scale(1.055) translateY(-6px) rotate(0deg)}
+  75%{transform:scale(1.065) translateY(-10px) rotate(1.8deg)}
+  100%{transform:scale(1.055) translateY(-6px) rotate(0deg)}
+}
+@keyframes cardGleamAura{
+  0%,100%{border-color:rgba(255,255,255,0.8);box-shadow:0 24px 50px rgba(0,0,0,0.85),0 0 25px rgba(255,255,255,0.35),0 0 55px rgba(180,140,255,0.35)}
+  33%{border-color:rgba(140,210,255,0.85);box-shadow:0 26px 54px rgba(0,0,0,0.9),0 0 35px rgba(120,200,255,0.55),0 0 65px rgba(220,140,255,0.45)}
+  66%{border-color:rgba(255,160,240,0.85);box-shadow:0 24px 50px rgba(0,0,0,0.85),0 0 30px rgba(255,140,230,0.55),0 0 60px rgba(140,240,255,0.45)}
+}
+.showcase-img-wrap{position:relative;border-radius:12px;overflow:hidden;background:#09090c;display:flex;align-items:center;justify-content:center;flex:1;min-height:0}
+.showcase-img-wrap img{width:100%;height:100%;max-height:460px;object-fit:contain;display:block;border-radius:12px;transition:filter 0.35s ease}
+.showcase-item:hover .showcase-img-wrap img{filter:brightness(1.08) contrast(1.04) drop-shadow(0 0 18px rgba(255,255,255,0.25))}
+.shimmer-sweep{position:absolute;inset:-120% -120%;pointer-events:none;background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,0.0) 35%,rgba(255,255,255,0.25) 45%,rgba(255,255,255,0.78) 50%,rgba(200,160,255,0.6) 54%,rgba(120,230,255,0.45) 58%,transparent 70%);transform:translateX(-180%) rotate(25deg);opacity:0;transition:opacity 0.3s ease;mix-blend-mode:screen;z-index:4}
+.showcase-item:hover .shimmer-sweep{opacity:1;animation:shimmerSweep 1.8s cubic-bezier(0.4,0,0.2,1) infinite}
+@keyframes shimmerSweep{
+  0%{transform:translateX(-180%) rotate(25deg)}
+  100%{transform:translateX(180%) rotate(25deg)}
+}
+.showcase-caption{display:flex;align-items:center;justify-content:space-between;padding:12px 6px 4px;font-size:13px;color:#d4d4d8}
+.caption-title{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:#ffffff}
+.caption-dot{width:7px;height:7px;border-radius:50%;background:#ffffff;box-shadow:0 0 8px #ffffff}
+.caption-hint{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:rgba(255,255,255,0.65);transition:all 0.25s ease}
+.showcase-item:hover .caption-hint{color:#ffffff;text-shadow:0 0 10px rgba(255,255,255,0.8);transform:translateX(3px)}
+@media(max-width:900px){.cheat-showcase-grid{grid-template-columns:1fr;gap:20px}}
+@media(prefers-reduced-motion:reduce){.showcase-item:hover .showcase-card{animation:none;transform:scale(1.03)}.showcase-item:hover .shimmer-sweep{animation:none}}
+.cheat-footer-actions{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.1)}
+.price-block{display:flex;flex-direction:column}
+.price-tag{font-size:24px;font-weight:900;color:#ffffff;letter-spacing:-0.5px}
+.price-sub{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px}
+.cheat-btns{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.btn-buy{background:#ffffff !important;color:#0a0a0b !important;border:1px solid #ffffff !important;padding:12px 28px !important;font-size:15px !important;font-weight:800 !important;border-radius:12px !important;box-shadow:0 0 20px rgba(255,255,255,0.35);transition:all 0.25s ease !important;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-buy:hover{background:#f4f4f5 !important;transform:translateY(-2px);box-shadow:0 0 30px rgba(255,255,255,0.7)}
+.btn-discord-secondary{background:rgba(255,255,255,0.08) !important;color:#ffffff !important;border:1px solid rgba(255,255,255,0.16) !important;padding:12px 22px !important;font-size:14px !important;font-weight:600 !important;border-radius:12px !important;text-decoration:none;transition:all 0.25s}
+.btn-discord-secondary:hover{background:rgba(255,255,255,0.16) !important;border-color:rgba(255,255,255,0.3) !important}
+.creators-banner{margin-top:28px;padding:20px 24px;border:1px dashed rgba(255,255,255,0.18);border-radius:16px;background:rgba(18,18,22,0.5);backdrop-filter:blur(10px);text-align:center;display:flex;align-items:center;justify-content:center;gap:10px;font-size:15px;font-weight:600;color:rgba(255,255,255,0.85);letter-spacing:0.5px}
+.creators-banner img{width:22px;height:18px;object-fit:contain;vertical-align:middle;filter:drop-shadow(0 0 6px rgba(255,255,255,0.4))}
+@media(max-width:760px){.cheat-card{padding:24px}.cheat-card-header{flex-direction:column}.cheat-footer-actions{flex-direction:column;align-items:stretch}.cheat-btns{flex-direction:column}.cheat-btns .btn{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+<div class="video-bg-wrap" aria-hidden="true">
+  <video id="bg-video" loop playsinline preload="auto">
+    <source src="bg-video.mp4" type="video/mp4">
+    <source src="Bloodhound-Q50-x-SnapYT.App (1).mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+</div>
+
+<div id="enter-screen" class="enter-screen">
+  <div class="enter-content">
+    <div class="enter-title">click the cat</div>
+    <div id="cat-enter-btn" class="cat-enter-btn" role="button" tabindex="0">
+      <img src="black-cat-blinking.gif" alt="Cat" class="cat-enter-img">
+    </div>
+    <div class="enter-hint">If the site lags, enable hardware acceleration in your browser <img src="eyes-emoji.png" alt="👀"></div>
+  </div>
+</div>
+
+
+<div class="bg" aria-hidden="true"><canvas id="fx"></canvas></div>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><span class="mark"><img src="black-cat-blinking.gif" alt="Nate's Softwares"></span>Nate's Softwares</a>
+    <nav>
+      <a href="#products">Browse cheats</a>
+      <a href="#status">Status</a>
+    </nav>
+    <div class="actions">
+      <a class="btn primary" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener">Join Discord</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <span class="pill">CRACKED CLOUDE.SYS <img src="laughing-cat.png" alt="😹" class="pill-cat-emoji"></span>
+      <h1>Welcome to <span>Nate's Softwares</span></h1>
+      <div class="actions">
+        <a class="btn primary btn-buy" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener">Buy CRACKED CLOUDE.SYS on Discord →</a>
+        <a class="btn" href="#products">View Features</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="cheat-card">
+        <div class="cheat-card-header">
+          <div>
+            <div class="cheat-badges">
+              <span id="status" class="badge-status">Undetected</span>
+            </div>
+            <h2 class="cheat-title">CRACKED CLOUDE.SYS <img src="laughing-cat.png" alt="😹" class="title-cat-emoji"></h2>
+          </div>
+          <a class="btn-buy" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener">
+            Buy Now
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+
+        <p class="cheat-desc">
+          Next-generation private cracked visual &amp; combat software featuring a sleek dark GUI, advanced player and skeleton ESP, armor &amp; health tracking, and an interactive real-time preview display. Fully optimized and stream-proof.
+        </p>
+
+        <div class="cheat-features">
+          <span class="feature-tag">🎯 Silent Aimbot</span>
+          <span class="feature-tag">👁️ Visual &amp; Skeleton ESP</span>
+          <span class="feature-tag">📦 Box &amp; Distance ESP</span>
+          <span class="feature-tag">🛡️ Health &amp; Armor Bars</span>
+          <span class="feature-tag">⚡ Live ESP Preview</span>
+          <span class="feature-tag">🔒 Undetected &amp; Stream-Proof</span>
+          <span class="feature-tag">👨‍💻 Server Dumps</span>
+        </div>
+
+        <div class="cheat-showcase-grid">
+          <!-- Cutout Image 1: In-Game Menu -->
+          <a class="showcase-item" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener" title="Click to buy CRACKED CLOUDE.SYS on Discord">
+            <div class="showcase-card">
+              <div class="showcase-img-wrap">
+                <img src="cloude-sys-menu.png" alt="CRACKED CLOUDE.SYS In-Game Menu Interface">
+                <div class="shimmer-sweep"></div>
+              </div>
+              <div class="showcase-caption">
+                <div class="caption-title">
+                  <span class="caption-dot"></span>
+                  <span>In-Game Menu Interface</span>
+                </div>
+                <span class="caption-hint">Click to Buy on Discord →</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Cutout Image 2: ESP Preview -->
+          <a class="showcase-item" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener" title="Click to buy CRACKED CLOUDE.SYS on Discord">
+            <div class="showcase-card">
+              <div class="showcase-img-wrap">
+                <img src="cloude-sys-esp.png" alt="CRACKED CLOUDE.SYS Live ESP Preview">
+                <div class="shimmer-sweep"></div>
+              </div>
+              <div class="showcase-caption">
+                <div class="caption-title">
+                  <span class="caption-dot"></span>
+                  <span>Live ESP Preview</span>
+                </div>
+                <span class="caption-hint">Click to Buy on Discord →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="cheat-footer-actions">
+          <div class="price-block">
+            <span class="price-tag">Instant Delivery</span>
+            <span class="price-sub">Available via Discord tickets</span>
+          </div>
+          <div class="cheat-btns">
+            <a class="btn-discord-secondary" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener">Join Discord Server</a>
+            <a class="btn-buy" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener">
+              Buy Now
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="creators-banner">
+        <span>lookin for content creators tho</span>
+        <img src="eyes-emoji.png" alt="👀">
+      </div>
+    </div>
+  </section>
+
+  <section id="community" style="padding-top:0">
+    <div class="wrap">
+      <div class="cta">
+        <h2>Cheating is better with a community.</h2>
+        <p>Questions before you buy? Chat with our team, follow updates and find your people on Discord.</p>
+        <a class="btn primary" href="https://discord.gg/natesoftwares" target="_blank" rel="noopener">Join the Discord</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+<script>
+(function(){
+  var r=document.documentElement,tx=innerWidth/2,ty=innerHeight*.25,cx=tx,cy=ty;
+  addEventListener('pointermove',function(e){tx=e.clientX;ty=e.clientY},{passive:true});
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){r.style.setProperty('--mx',tx+'px');r.style.setProperty('--my',ty+'px');return}
+  function tick(){
+    cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;
+    r.style.setProperty('--mx',cx+'px');r.style.setProperty('--my',cy+'px');
+    r.style.setProperty('--sx',((cx/innerWidth-.5)*-90)+'px');
+    r.style.setProperty('--sy',((cy/innerHeight-.5)*-90)+'px');
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var c=document.getElementById('fx'),g=c.getContext('2d'),P=[],dpr=Math.min(devicePixelRatio||1,2),W,H,lx=null,ly=null,acc=0;
+  function rs(){W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0)}
+  rs();addEventListener('resize',rs);
+  addEventListener('pointermove',function(e){
+    var x=e.clientX,y=e.clientY;
+    if(lx!==null){
+      var dx=x-lx,dy=y-ly,d=Math.hypot(dx,dy);
+      if(d>0){
+        acc+=d;
+        var a=Math.atan2(dy,dx);
+        while(acc>16){
+          acc-=16;
+          var off=(Math.random()-.5)*80;
+          P.push({x:x-Math.sin(a)*off,y:y+Math.cos(a)*off,a:a+(Math.random()-.5)*.5,L:50+Math.random()*110+Math.min(d,60),w:2+Math.random()*4,t:0,dur:700+Math.random()*700,sp:Math.min(d,40)*.05,b:Math.random()<.2});
+        }
+        if(P.length>220)P.splice(0,P.length-220);
+      }
+    }
+    lx=x;ly=y;
+  },{passive:true});
+  document.addEventListener('mouseleave',function(){lx=null});
+  var last=performance.now();
+  function frame(n){
+    var dt=Math.min(n-last,50);last=n;
+    g.clearRect(0,0,W,H);
+    g.globalCompositeOperation='lighter';
+    g.lineCap='round';
+    for(var i=P.length-1;i>=0;i--){
+      var p=P[i];p.t+=dt/p.dur;
+      if(p.t>=1){P.splice(i,1);continue}
+      var e=1-Math.pow(1-Math.min(p.t*3.5,1),3),al=Math.pow(1-p.t,1.6),m=p.sp*(1-p.t)*dt/16;
+      p.x+=Math.cos(p.a)*m;p.y+=Math.sin(p.a)*m;
+      var hl=p.L*e/2,cx=Math.cos(p.a)*hl,cy=Math.sin(p.a)*hl;
+      var gr=g.createLinearGradient(p.x-cx,p.y-cy,p.x+cx,p.y+cy);
+      gr.addColorStop(0,'rgba(154,154,163,0)');
+      gr.addColorStop(1,'rgba(230,230,240,'+(al*(p.b?.7:.4))+')');
+      g.strokeStyle=gr;g.lineWidth=p.w*(1-p.t*.5);
+      g.beginPath();g.moveTo(p.x-cx,p.y-cy);g.lineTo(p.x+cx,p.y+cy);g.stroke();
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function(){
+  var video = document.getElementById('bg-video');
+  var enterScreen = document.getElementById('enter-screen');
+  var catBtn = document.getElementById('cat-enter-btn');
+
+  var currentVolume = 0.2;
+  var hasEntered = false;
+
+  function ensureStartTime() {
+    if (video && video.duration && video.duration > 25) {
+      if (video.currentTime < 25) {
+        video.currentTime = 25;
+      }
+    }
+  }
+
+  if (video) {
+    video.volume = currentVolume;
+    video.muted = false; // ready with audio when played
+
+    video.addEventListener('loadedmetadata', ensureStartTime);
+    video.addEventListener('ended', function(){
+      if (video.duration && video.duration > 25) {
+        video.currentTime = 25;
+      } else {
+        video.currentTime = 0;
+      }
+      video.play().catch(function(){});
+    });
+  }
+
+  function handleEnter() {
+    if (hasEntered) return;
+    hasEntered = true;
+
+    if (catBtn) catBtn.classList.add('burst');
+
+    if (video) {
+      ensureStartTime();
+      video.muted = false;
+      video.volume = currentVolume;
+      video.play().catch(function(){});
+    }
+
+    setTimeout(function(){
+      if (enterScreen) {
+        enterScreen.classList.add('entered');
+      }
+    }, 450);
+  }
+
+  if (catBtn) {
+    catBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      handleEnter();
+    });
+    catBtn.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleEnter();
+      }
+    });
+  }
+
+  if (enterScreen) {
+    enterScreen.addEventListener('click', function(){
+      if (!hasEntered) handleEnter();
+    });
+  }
+})();
+</script>
+</body>
+</html>
